@@ -1,0 +1,16 @@
+input[type*="file"]{
+  border:none;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 580px) {
+  .col-4,.col-6,.col-3{
+    flex:100%;
+    max-width:100%;
+  }
+  .card-body{
+    padding:0px;
+  }
+  .card{
+    padding:10px !important;
+  }
+  }

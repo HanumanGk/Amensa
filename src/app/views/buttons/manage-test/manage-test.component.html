@@ -1,0 +1,157 @@
+<section class="content profile-page">
+  <div class="container-fluid">
+      <div class="row clearfix p-t-30">
+          <div class=" col-12">
+              <div class="card" style="border:none;padding:20px;">
+                  <div class="header">
+                      <h4>Manage Tests</h4>
+                  </div>
+                  <div *ngIf="success_msg" class="alert alert-success">
+                    <strong>Well done!</strong> Test Added successfully.
+                  </div>
+                  <form class="" [formGroup]="addTests" (ngSubmit)="onSubmit()">
+                    <div class="body">
+                      <div class="row clearfix p-t-10">
+                        <div class=" col-12">
+                          <div class="card" style="border:none;;">
+                            <div class="body">
+                              <div class="row clearfix">
+                                  <div class="col-4">
+                                    <p> <b>Test Name</b> </p>
+                                    <div class="input-group">
+                                          <input type="text" class="form-control"  #test_name placeholder="Test Name" formControlName='test_name' name='test_name' (change)="testCheckUnique()">
+                                          <div *ngIf="addTests.controls['test_name'].touched && !addTests.controls['test_name'].valid">
+                                            <span *ngIf="addTests.controls['test_name'].hasError('required') ">
+                                                Test Name is required
+                                                </span>
+                                          </div>
+
+                                      </div>
+                                    <p *ngIf="testAlredyExist != ''" class="badge-danger">
+                                      {{testAlredyExist}}
+                                    </p>
+                                </div>
+                                <div class="col-4">
+                                  <p> <b>Lab Name</b> </p>
+                                    <select class="form-control show-tick"  data-live-search="true" formControlName='lab_id' >
+                                        <option  *ngFor="let labs of listLabs;" [value]="labs.id">{{labs.lab_name}}</option>
+                                    </select>
+                              </div>
+                                <div class="col-4">
+                                  <p> <b>Sample Name</b> </p>
+                                  <div class="input-group">
+                                      <select class="form-control show-tick"  data-live-search="true" formControlName='sample_name' >
+                                        <option  *ngFor="let labc of listContainer;" [value]="labc.container_name">{{labc.container_name}}</option>
+                                    </select>
+                                        </div>
+                              </div>
+                                  <div class="col-4">
+                                    <p> <b>Price</b> </p>
+                                    <div class="input-group">
+                                          <input type="text" class="form-control" placeholder="Price" formControlName='price' name='price' id='price'>
+                                      </div>
+                                </div>
+                                <div class="col-4">
+                                  <p> <b>B2B Price</b> </p>
+                                  <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="B2B Price" formControlName='b2b' name='b2b' id='b2b'>
+                                    </div>
+                              </div>
+                                <div class="col-4">
+                                  <p> <b>Status</b> </p>
+                                    <select class="form-control show-tick" formControlName='status' name='status' id='status'>
+                                       <option value="">Select Status</option>
+                                        <option value="0">Active</option>
+                                        <option value="1">Inactive</option>
+                                    </select>
+                              </div>
+                              </div>
+                          </div>
+
+                          <div class="" style="display:table;margin:auto;padding:15px 0px 0px 0px;">
+                            <input type="Submit" value="ADD TESTS"  class="btn btn-raised btn-primary m-t-15 waves-effect">
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="content profile-page">
+  <div class="container-fluid">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <b>Advance Search</b></div>
+      <div class="panel-body">
+          <div class="row">
+              <div class="col-sm-6 col-xs-6 col-6">
+                  <div class="form-group">
+                      <label for="name">Test Name:</label>
+                      <input type="text" autocomplete="off" class="form-control" id="name" (keyup)="onNameSearch($event.target.value)" placeholder="Test Name Search" />
+                  </div>
+              </div>
+              <div class="col-sm-6 col-xs-6 col-6">
+                <div class="form-group">
+                    <label for="name">Samples:</label>
+                    <input type="text" autocomplete="off" class="form-control" id="samples" (keyup)="onSamplesSearch($event.target.value)" placeholder="Samples Search" />
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
+
+    <div class="row clearfix">
+      <div class=" col-12 col-sm-12">
+          <div class="card" style="border:none;padding:20px;">
+              <div class="header">
+                  <h4> LISTING TESTS </h4>
+              </div>
+              <div class="body">
+                  <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                      <thead>
+                          <tr>
+                              <th>Id</th>
+                              <th>Test Name</th>
+                              <th>Test Samples</th>
+                              <th>Test Status</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tfoot>
+                          <tr>
+                              <th>Id</th>
+                              <th>Test Name</th>
+                              <th>Test Samples</th>
+                              <th>Test Status</th>
+                              <th>Action</th>
+                          </tr>
+                      </tfoot>
+                      <tbody>
+                          <tr *ngFor="let task of listTest; let i = index;">
+                              <td width="5%">{{i+1}}</td>
+                              <td width="35%">{{task.test_name}}</td>
+                              <td width="35%">{{task.samples}}</td>
+                              <td width="15%" class="col-green" *ngIf="task.status == 0">Active</td>
+                              <td width="15%" class="col-red" *ngIf="task.status == 1">Inactive</td>
+                              <td width="35%">
+                                <button  class="btn btn-outline-primary btn-sm" href="javascript:void(0);" routerLink="/test/edittest/{{task.id}}" ngbDropdownToggle>Edit</button>
+                                <button  class="btn btn-outline-primary btn-sm" href="javascript:void(0);" (click)="deleteTest(task.id)" ngbDropdownToggle>Delete</button>
+                               </td>
+                          </tr>
+                          <tr *ngIf="listTest && listTest.length == 0">
+                            <td colspan="6" class="text-center">No Logs recorded</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+
+<section class="content ecommerce-page">
+  <div class="">
+      <div class="row clearfix">
+          <div class="col-12">
+              <div class="card product_item_list">
+                  <div class="body table-responsive">
+                      <table class="table table-hover m-b-0">
+                          <thead>
+                              <tr>
+                                <th data-breakpoints="sm xs">ID</th>
+                                  <th data-breakpoints="sm xs">Test ID</th>
+                                  <th data-breakpoints="sm xs">Barcode</th>
+                                  <th data-breakpoints="sm xs">Status</th>
+                                  <th data-breakpoints="sm xs">Patient Name</th>
+                                  <!-- <th data-breakpoints="sm xs">Gender</th> -->
+                                  <th data-breakpoints="sm xs">Age</th>
+                                  <th data-breakpoints="sm xs">Test Name</th>
+                                  <th data-breakpoints="sm xs">MRP</th>
+                                  <th data-breakpoints="sm xs">B2B</th>
+                                  <th data-breakpoints="sm xs">Record Date</th>
+                                  <th data-breakpoints="sm xs">Collection Date</th>
+                                  <!-- <th data-breakpoints="sm xs">Lab Entry Date</th> -->
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr  *ngFor="let appointment of listAppointment; let i = index;">
+                                  <td>{{i+1}}</td>
+                                  <td>{{appointment.pid}}</td>
+                                  <td>{{appointment.p_barcode}}</td>
+                                  <td>{{appointment.appointment_status}}</td>
+                                  <td>{{appointment.pname}}</td>
+                                  <td>{{appointment.age}}</td>
+                                  <td>{{appointment.name}}</td>
+                                  <td>{{appointment.mrp}}</td>
+                                  <td>{{appointment.b2b}}</td>
+                                  <td>{{appointment.created_at}}</td>
+                                  <td>{{appointment.updated_at}}</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

@@ -1,0 +1,113 @@
+<section class="content profile-page">
+  <div class="container-fluid">
+      <div class="row clearfix p-t-30">
+          <div class=" col-12">
+              <div class="card" style="padding:20px;border:none;">
+                  <div class="header">
+                      <h4>Add Franchisee</h4>
+                  </div>
+                  <div *ngIf="success_msg" class="alert alert-success text-center" style="display: table;margin:auto">
+                    Franchisee Add Successfully
+                  </div>
+                  <form class="" [formGroup]="editFranchisee" (ngSubmit)="onSubmit()">
+                    <div class="body">
+                      <div class="row clearfix p-t-10">
+                        <div class=" col-12">
+                          <div class="card" style="border:none;">
+                            <div class="body">
+                              <div class="row clearfix">
+                                <input type="hidden" class="form-control" value="2" formControlName='franchisee_id'>
+                                  <div class="col-6">
+                                    <p> <b>Franchisee Name</b> </p>
+                                    <div class="input-group">
+                                          <input type="text" class="form-control"  #franchisee_name placeholder="Franchisee Name" formControlName='franchisee_name' name='franchisee_name'>
+
+                                      </div>
+                                </div>
+                                  <div class="col-6">
+                                    <p> <b>Email Id</b> </p>
+                                    <div class="input-group">
+                                          <input type="text" class="form-control"  #lab_name placeholder="Email Id" formControlName='email' name='email'>
+
+                                      </div>
+                                </div>
+                              </div>
+                              <div class="row clearfix">
+                                <div class="col-12">
+                                  <p> <b>Franchisee Address</b> </p>
+                                  <div class="input-group">
+                                        <textarea rows="2" class="form-control no-resize" formControlName='franchisee_address' name='lab_desc' id='franchisee_address' placeholder="Please type franchisee address..."></textarea>
+
+                                    </div>
+                              </div>
+                            </div>
+                              <div class="row clearfix">
+                                <div class="col-6">
+                                  <p> <b>Franchisee Owner Name</b> </p>
+                                  <div class="input-group">
+                                        <input type="text" class="form-control"  #franchisee_owner_name placeholder="Franchisee Owner Name" formControlName='franchisee_owner_name' name='franchisee_owner_name'>
+
+                                    </div>
+                              </div>
+                              <div class="col-6">
+                                <p> <b>Contact Number</b> </p>
+                                <div class="input-group">
+                                      <input type="text" class="form-control mobile-phone-number" placeholder="Contact Number" formControlName='contact_number' name='contact_number'>
+
+                                  </div>
+                              </div>
+                            </div>
+                          <div class="row clearfix">
+                            <div class="col-3">
+                              <p> <b>Country</b> </p>
+                              <div class="input-group">
+                                    <input type="text" class="form-control"  placeholder="Country" formControlName='country' name='country'>
+
+                                  </div>
+                          </div>
+                            <div class="col-3">
+                              <p> <b>State</b> </p>
+                              <div class="input-group">
+                                    <input type="text" class="form-control"  placeholder="State" formControlName='state' name='state'>
+
+                                </div>
+                          </div>
+                          <div class="col-3">
+                            <p> <b>City</b> </p>
+                            <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="City" formControlName='city' name='city'>
+
+                              </div>
+                          </div>
+                            <div class="col-3">
+                              <p> <b>Pincode</b> </p>
+                              <div class="input-group">
+                                    <input type="text" class="form-control"  placeholder="Pincode" formControlName='pincode' name='pincode'>
+
+                                  </div>
+                          </div>
+                        </div>
+                        <div class="row clearfix">
+                          <div class="col-12">
+                              <p> <b>Status</b> </p>
+                                <select class="form-control show-tick" formControlName='status' name='status' id='status'>
+                                  <option value="">Select Status</option>
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                          </div>
+                        </div>
+                          </div>
+                          <div class="" style="display:table;margin:auto;padding:20px 0px 0px 0px;">
+                            <input type="Submit" value="UPDATE FRANCHISEE"  class="btn btn-raised btn-primary m-t-15 waves-effect">
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

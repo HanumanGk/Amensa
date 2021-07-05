@@ -1,0 +1,59 @@
+.table {
+	td {
+		padding: .55rem !important;
+	}
+	th {
+		padding: .55rem !important;
+	}
+}
+.body-card {
+	padding: 20px 50px !important;
+}
+.header-card {
+	padding: 20px 40px 0px 40px !important;
+}
+.compare-table {
+	tr {
+		td {
+			&:first-child {
+				text-align: left !important;
+			}
+		}
+	}
+}
+.lab_logo {
+	width: 100px;
+	float: right;
+}
+.compare-search {
+	width: 65%;
+	padding: 8px;
+	border: 1px;
+	height: 38px;
+}
+.card {
+	.header {
+		h2 {
+			width: 40%;
+			display: inline-block;
+		}
+	}
+}
+.compare-select {
+  border-radius:6px;
+	border: 1px;
+	padding: 8px;
+	height: 38px;
+}
+.compare-search-select-div {
+	display: table;
+	margin: auto;
+	width: 300px;
+}
+.selectbtn{
+  font-size: 13px;
+    padding: 4px;
+    margin-left: 2%;
+    margin-top: 1%;
+    float: right;
+}

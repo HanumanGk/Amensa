@@ -1,0 +1,191 @@
+<!-- <section class="content profile-page"> -->
+  <div class="animated fadeIn">
+      <div class="row">
+          <div class="col-12">
+            <!-- {{labDetails | json}} -->
+              <div class="card" *ngFor="let labs of labDetails">
+                  <div class="header">
+                      <h2>{{labs.lab_name}} Lab</h2>
+                      <h4>Book a Test :Balance Rs.487</h4>
+                  </div>
+                  <form class="col-12" (ngSubmit)="onSubmit()" [formGroup]="appointmentBook" >
+                    <div class="card-body">
+                      <div class="row clearfix p-t-10">
+                        <div class="col-12">
+                          <div class="card">
+                            <div class="body">
+                              <div class="row clearfix">
+                                <div class="col-4">
+                                  <input type="hidden" class="form-control" formControlName='labid'>
+                                    <p> <b>Franchisee</b> </p>
+                                    <select class="form-control show-tick" formControlName="franchisee_name">
+                                        <option value="">Select Franchisee List</option>
+                                        <option *ngFor="let franchisee of Franchiseelist" value="{{franchisee.id}}">{{franchisee.franchisee_name}}</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-4">
+                                    <p> <b>Collection Center</b> </p>
+                                    <select class="form-control show-tick" formControlName="franchisee_center">
+                                        <option value="1">Thane</option>
+                                        <option value="2">Kalwa</option>
+                                        <option value="3">Andheri</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-4">
+                                    <p> <b>Test ID</b> </p>
+                                    <div class="input-group">
+                                          <input type="text" readonly class="form-control"  placeholder="Paitent ID" formControlName='pid' name='pid' id='pid'>
+                                        </div>
+                                </div>
+                              </div>
+                              <div class="row clearfix">
+                                  <div class="col-4">
+                                      <p> <b>Paitent Name</b> </p>
+                                      <div class="input-group">
+                                              <input type="text" class="form-control" placeholder="Paitent Name" formControlName='pname' name='pname'>
+                                          </div>
+                                  </div>
+                                  <div class="col-4">
+                                    <p> <b>Age</b> </p>
+                                    <div class="input-group">
+                                            <input type="text" class="form-control"  formControlName='age' placeholder="0 Year(s)">
+                                            <input type="text" class="form-control"  formControlName='month' placeholder="0 Month(s)">
+                                            <input type="text" class="form-control"  formControlName='day' placeholder="0 Day(s)">
+                                        </div>
+                                </div>
+                                <div class="col-4">
+                                  <p> <b>Mobile Number</b> </p>
+                                  <div class="input-group">
+                                          <input type="text" class="form-control"  formControlName='mobile' placeholder="Mobile Number">
+                                      </div>
+                              </div>
+                              </div>
+                              <div class="row clearfix">
+                                <div class="col-4">
+                                  <p> <b>Hospital Name</b> </p>
+                                  <div class="input-group">
+                                          <input type="text" class="form-control" formControlName='hospital_name' placeholder="Hospital Name">
+                                      </div>
+                                </div>
+                                <div class="col-4">
+                                  <p> <b>Doctor Name</b> </p>
+                                  <div class="input-group">
+                                          <input type="text" class="form-control" formControlName='doctor_name' placeholder="Doctor Name">
+                                      </div>
+                                </div>
+                                <div class="col-4">
+                                  <p> <b>Email ID</b> </p>
+                                  <div class="input-group">
+                                          <input type="text" class="form-control" formControlName='emailid' placeholder="Email ID">
+                                      </div>
+                                </div>
+                              </div>
+                              <div class="row clearfix">
+                                <div class="col-6">
+                                    <div class="header" style="padding: 20px 20px 0px 0px !important;">
+                                        <p> <b>Tests</b> </p>
+                                    </div>
+                                  <div class="tag-input">
+                                    <tag-input [(ngModel)]="selectedTagItems"
+                                                [identifyBy]="'id'"
+                                                [displayBy]="'test_name'"
+                                                formControlName='lab_id'
+                                                (onAdd)="onItemAdded($event)"
+                                                (onRemove)="onItemRemoved($event)"
+                                                >
+                                      <tag-input-dropdown
+                                          [appendToBody]="true"
+                                          [showDropdownIfEmpty]="true"
+                                          [autocompleteItems]="listLabs"
+                                          [identifyBy]="'id'"
+                                          [displayBy]="'test_name'">
+                                      </tag-input-dropdown>
+                                    </tag-input>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="header" style="padding: 20px 20px 0px 0px !important;">
+                                      <p> <b>Packages</b> </p>
+                                  </div>
+                                <div class="tag-input">
+                                  <tag-input [(ngModel)]="selectedPackageItems"
+                                              [identifyBy]="'id'"
+                                              [displayBy]="'package_name'"
+                                              formControlName='package_id'
+                                              (onAdd)="onPackageAdded($event)"
+                                              (onRemove)="onPackageRemoved($event)"
+                                              >
+                                    <tag-input-dropdown
+                                        [appendToBody]="true"
+                                        [showDropdownIfEmpty]="true"
+                                        [autocompleteItems]="listPackages"
+                                        [identifyBy]="'id'"
+                                        [displayBy]="'package_name'">
+                                    </tag-input-dropdown>
+                                  </tag-input>
+                                </div>
+                              </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-12">
+                                      <div class="scrollTable">
+                                          <table id="mainTable" class="table table-striped">
+                                              <thead>
+                                                  <tr>
+                                                      <th>Sample Type</th>
+                                                      <th>Package Name</th>
+                                                      <th>Collection Date(dd-mm-yy)</th>
+                                                      <th>Barcode</th>
+                                                      <th>Action</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                  <tr *ngFor="let item of testTableData">
+                                                      <td>{{item.samples}}</td>
+                                                      <td *ngIf="item.package_name ==''">Pathlogy Test</td>
+                                                      <td *ngIf="item.package_name !==''">{{item.package_name}}</td>
+                                                      <td>29-07-2020 11:55 PM</td>
+                                                      <td contenteditable>0</td>
+                                                      <td><button class="btn btn-primary">Hold</button> <button class="btn btn-primary" (click)="onItemRemoved($event)">Delete</button></td>
+                                                  </tr>
+
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                </div>
+                              </div>
+                              <div class="row clearfix">
+                                <div class="col-6">
+
+                                  <p> <b>Total MRP</b> </p>
+                                  <div class="input-group">
+                                    <div class="form-line">
+                                        <input type="text" disabled class="form-control" formControlName='total_amount' placeholder="MRP">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <p> <b>Final Amount</b> </p>
+                                  <div class="input-group">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control" formControlName='final_amount' placeholder="Final Amount">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row clearfix" style="display:table;margin:auto;padding:30px 0px 0px 0px;">
+                                <div class="col-12">
+                                  <input type="Submit" value="SUBMIT" class="btn btn-raised btn-primary m-t-15 waves-effect">
+                                </div>
+                              </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+<!-- </section> -->

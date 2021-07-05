@@ -1,0 +1,87 @@
+<section class="content home">
+  <div class="block-header">
+    <!-- <div
+      class="compare-search-select-div"
+      (change)="updateResults()"
+      (keyup)="updateResults()"
+    >
+      <select class="compare-select" [(ngModel)]="filterOption">
+        <option value="all">All</option>
+        <option value="angular">METROPOLIS</option>
+        <option value="ionic">THYROCARE</option>
+        <option value="react">GENERAL DIAGONOSTICS</option>
+      </select>
+    </div> -->
+    <div class="tag-input-class">
+      <div
+      class="compare-search-select-div"
+      (change)="updateResults()"
+      (keyup)="updateResults()"
+    >
+      <select class="compare-select" #myname [(ngModel)]="filterOption">
+        <option value="all">All Labs</option>
+        <option *ngFor="let labs of labsList" value="{{labs.id}}">{{labs.lab_name}}</option>
+      </select>
+    </div>
+    <div>
+      <tag-input
+        [(ngModel)]="selectedTagItems"
+        [identifyBy]="'id'"
+        [displayBy]="'test_name'"
+        [placeholder]="'Add more tests..'"
+        [secondaryPlaceholder]="'Search for Tests (CBC, MRI, etc.)'"
+        (onAdd)="onItemAdded($event)"
+        (onRemove)="onItemRemoved($event)"
+        #username
+      >
+        <tag-input-dropdown
+          [appendToBody]="true"
+          [showDropdownIfEmpty]="true"
+          [autocompleteItems]="labsTest"
+          [identifyBy]="'id'"
+          [displayBy]="'test_name'"
+        >
+        </tag-input-dropdown>
+      </tag-input>
+    </div>
+    </div>
+  </div>
+  <!-- {{testTableData | json}} -->
+  <div class="container-fluid">
+    <div class="row clearfix">
+      <div class="col-lg-6" *ngFor="let item of testTableData[0]">
+        <div class="card">
+          <div class="card-header">{{ item.lab_name }}<small> <br>{{item.certified}}</small>
+            <button class="btn btn-primary selectbtn" routerLink="/base/booktest/{{item.lid}}">Select Lab</button>
+            <img src="{{ item.logo }}" class="lab_logo" height="auto" />
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Test</th>
+                  <th>MRP</th>
+                  <th>B2B</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let itemData of item.tests">
+                  <td>{{itemData.test_name}}</td>
+                  <td>{{itemData.mrp}}</td>
+                  <td>{{itemData.b2b}}</td>
+                </tr>
+                <tr  *ngFor="let itemTotal of item.testsTotal">
+                  <td>Total Amount</td>
+                  <td>{{itemTotal.mrpTotal}}</td>
+                  <td>{{itemTotal.b2bTotal}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

@@ -1,0 +1,48 @@
+
+<section class="content ecommerce-page">
+  <div class="container-fluid">
+      <div class="row clearfix">
+          <div class="col-12">
+              <div class="card product_item_list" style="border:1px;padding:20px;">
+                <div class="header">
+                  <h3> LISTING FRANCHISEE </h3>
+              </div>
+                  <div class="body table-responsive">
+                      <table class="table table-bordered table-hover dataTable js-exportable">
+                          <thead>
+                              <tr>
+                                  <th data-breakpoints="sm xs">ID</th>
+                                  <th data-breakpoints="sm xs">Franchisee Name</th>
+                                  <th data-breakpoints="sm xs">Owner Name</th>
+                                  <th data-breakpoints="sm xs">Email Id</th>
+                                  <th data-breakpoints="sm xs">Contact</th>
+                                  <!-- <th data-breakpoints="sm xs">Address</th> -->
+                                  <th data-breakpoints="sm xs">Status</th>
+                                  <th data-breakpoints="sm xs">Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr  *ngFor="let labs of listFranchisee; let i = index;">
+                                  <td>{{i+1}}</td>
+                                  <td>{{labs.franchisee_name}}</td>
+                                  <td>{{labs.name}}</td>
+                                  <td>{{labs.email}}</td>
+                                  <td>{{labs.mobile}}</td>
+                                  <!-- <td><span class="text-muted">{{labs.address}} {{labs.city}} {{labs.pincode}}</span></td> -->
+                                  <td class="col-green" *ngIf="labs.status == 1">Active</td>
+                                  <td class="col-red" *ngIf="labs.status == 0">Inactive</td>
+                                  <td>
+
+                                      <!-- <a type="button" class="btn btn-default waves-effect waves-float waves-green" data-toggle="modal" data-target="#largeModal-{{i+1}}"><i class="material-icons">receipt</i></a> -->
+                                      <button  class="btn btn-outline-primary btn-sm" href="javascript:void(0);" routerLink="/franchisee/editfranchisee/{{labs.id}}" ngbDropdownToggle>Edit</button>
+                                      <button  class="btn btn-outline-primary btn-sm" href="javascript:void(0);" (click)="deleteFranchisee(labs.id)" ngbDropdownToggle>Delete</button>
+                                    </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

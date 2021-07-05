@@ -1,0 +1,94 @@
+<section class="content profile-page">
+  <div class="container-fluid">
+     <div class="row clearfix p-t-30">
+        <div class=" col-12">
+           <div class="card" style="padding:20px;border:none;">
+              <div class="header">
+                 <h4>Edit Packages</h4>
+              </div>
+              <div *ngIf="success_msg" class="alert alert-success">
+                 <strong>Well done!</strong> Packages Updated successfully.
+              </div>
+              <form class="" [formGroup]="editPackages" (ngSubmit)="onSubmit()">
+              <div class="body">
+                 <div class="row clearfix p-t-10">
+                    <div class=" col-12"></div>
+                    <div class="card" style="border:none;padding:20px;">
+                       <div class="body">
+                          <div class="row clearfix">
+                             <div class="col-4">
+                                <p> <b>Packages Name</b> </p>
+                                <div class="input-group">
+                                      <input type="hidden" class="form-control" formControlName='pid' name='pid'>
+                                      <input type="text" class="form-control"  #package_name placeholder="Packages Name" formControlName='package_name' name='package_name'>
+                                      <div *ngIf="editPackages.controls['package_name'].touched && !editPackages.controls['package_name'].valid">
+                                         <span *ngIf="editPackages.controls['package_name'].hasError('required') ">
+                                         Packages Name is required
+                                         </span>
+                                      </div>
+                                </div>
+                             </div>
+                             <div class="col-4">
+                              <p> <b>Lab Name</b> </p>
+                              <select class="form-control show-tick" data-live-search="true" formControlName='lab_id' name='lab_id' id='lab_id'>
+                                 <!-- <option translate>Conatiners</option> -->
+                                 <option  *ngFor="let labs of listLabs;" value="{{labs.id}}">{{labs.lab_name}}</option>
+                              </select>
+                           </div>
+                             <div class="col-4">
+                                <p> <b>Test List</b> </p>
+                                <select class="form-control show-tick" multiple data-live-search="true" formControlName='test_id' name='test_id' id='test_id'>
+                                   <!-- <option translate>Conatiners</option> -->
+                                   <option  *ngFor="let tests of listTests;" value="{{tests.id}}">{{tests.test_name}}</option>
+                                </select>
+                             </div>
+                             <div class="col-4">
+                                <p> <b>Packages Price</b> </p>
+                                <div class="input-group">
+                                      <input type="text" class="form-control"  #package_name placeholder="Packages Price" formControlName='package_price' name='package_price'>
+                                      <div *ngIf="editPackages.controls['package_price'].touched && !editPackages.controls['package_price'].valid">
+                                         <span *ngIf="editPackages.controls['package_price'].hasError('required') ">
+                                         Packages Price is required
+                                         </span>
+                                         <span *ngIf="editPackages.controls['package_price'].hasError('pattern') ">
+                                         Packages Price is only in numeric
+                                         </span>
+                                      </div>
+                                   </div>
+                             </div>
+                             <div class="col-4">
+                              <p> <b>Packages B2B Price</b> </p>
+                              <div class="input-group">
+                                    <input type="text" class="form-control"  #package_name placeholder="Packages B2B Price" formControlName='b2b' name='b2b'>
+                                    <div *ngIf="editPackages.controls['b2b'].touched && !editPackages.controls['b2b'].valid">
+                                       <span *ngIf="editPackages.controls['b2b'].hasError('required') ">
+                                       Packages B2B Price is required
+                                       </span>
+                                       <span *ngIf="editPackages.controls['b2b'].hasError('pattern') ">
+                                       Packages B2B Price is only in numeric
+                                       </span>
+                                    </div>
+                                 </div>
+                           </div>
+                             <div class="col-4">
+                                <p> <b>Status</b> </p>
+                                <select class="form-control show-tick" formControlName='status' name='status' id='status'>
+                                   <option value="">Select Status</option>
+                                   <option value="1">Active</option>
+                                   <option value="0">Inactive</option>
+                                </select>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="" style="padding:20px 0px 0px 0px;display:table;margin:auto;">
+                       <input type="Submit" value="UPDATE PACKAGES"   class="btn btn-raised btn-primary m-t-15 waves-effect">
+                    </div>
+                 </div>
+              </div>
+        </form>
+     </div>
+  </div>
+  </div>
+  </div>
+</section>

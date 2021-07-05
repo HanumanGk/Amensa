@@ -1,0 +1,92 @@
+<section class="content profile-page">
+  <div class="container-fluid">
+      <div class="row clearfix p-t-30">
+          <div class=" col-12">
+              <div class="card" style="padding:20px;border:none;">
+                  <div class="header">
+                      <h4>Add Money</h4>
+                  </div>
+                  <!-- <div *ngIf="success_msg" class="alert alert-success text-center" style="display: table;margin:auto">
+                    Labs Add Successfully
+                  </div> -->
+                  <form class="" [formGroup]="addMoney">
+                    <div class="body">
+                      <div class="row clearfix p-t-10">
+                        <div class=" col-12">
+                          <div class="card" style="border:none;">
+                            <div class="body">
+                              <div class="row clearfix">
+                                <div class="col-12">
+                                  <p> <b>Payment Mode</b> </p>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Payment Mode" formControlName='payment_mode'>
+                                  </div>
+                              </div>
+                            </div>
+                              <div class="row clearfix">
+                                  <div class="col-6">
+                                    <p> <b>Center Name</b> </p>
+                                    <div class="input-group">
+                                          <input type="text" class="form-control" placeholder="Center Name" formControlName='center_name'>
+                                          </div>
+                                </div>
+                                  <div class="col-6">
+                                    <p> <b>Center Code</b> </p>
+                                    <div class="input-group">
+                                          <input type="text" class="form-control"  placeholder="Center Code" formControlName='center_code'>
+                                          </div>
+                                </div>
+                              </div>
+
+                              <div class="row clearfix">
+                                <div class="col-6">
+                                  <p> <b>First Name</b> </p>
+                                  <div class="input-group">
+                                        <input type="text" class="form-control"  #lab_name placeholder="First Name" formControlName='fname'>
+                                        </div>
+                              </div>
+                                <div class="col-6">
+                                  <p> <b>Last Name</b> </p>
+                                  <div class="input-group">
+                                        <input type="text" class="form-control"  #lab_name placeholder="Last Name" formControlName='lname'>
+                                        </div>
+                              </div>
+                            </div>
+
+                            <div class="row clearfix">
+                              <div class="col-6">
+                                <p> <b>Email ID</b> </p>
+                                <div class="input-group">
+                                      <input type="text" class="form-control"  placeholder="Emial ID" formControlName='emailid'>
+                                      </div>
+                            </div>
+                              <div class="col-6">
+                                <p> <b>Mobile Number</b> </p>
+                                <div class="input-group">
+                                      <input type="text" class="form-control"  placeholder="Mobile Number" formControlName='mobile'>
+                                      </div>
+                            </div>
+                          </div>
+
+                          <div class="row clearfix">
+                            <div class="col-12">
+                              <p> <b>Amount</b> </p>
+                              <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Amount" formControlName='amount'>
+                                    </div>
+                          </div>
+                        </div>
+                          </div>
+                          <div class="" style="display:table;margin:auto;padding:20px 0px 0px 0px;">
+                            <input (click)="PaymentSubmit($event)" value="SUBMIT" class="btn btn-raised btn-primary m-t-15 waves-effect">
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

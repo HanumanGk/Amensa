@@ -1,0 +1,111 @@
+<section class="content profile-page">
+  <div class="container-fluid">
+      <div class="row clearfix p-t-30">
+          <div class=" col-12">
+              <div class="card" style="border:none;padding:20px;">
+                  <div class="header">
+                      <h4>Manage Container</h4>
+                  </div>
+                  <div *ngIf="success_msg" class="alert alert-success">
+                    <strong>Well done!</strong> Container Updated successfully.
+                  </div>
+                  <form class="" [formGroup]="addContainer" (ngSubmit)="onSubmit()">
+                    <div class="body">
+                      <div class="row clearfix p-t-10">
+                        <div class=" col-12">
+                          <div class="card" style="border: none;">
+                            <div class="body">
+                              <div class="row clearfix">
+                                  <div class="col-6 ">
+                                    <p> <b>Container Name</b> </p>
+                                    <div class="input-group">
+                                          <input type="hidden" class="form-control" formControlName='cid' name='cid'>
+                                          <input type="text" class="form-control"  #container_name placeholder="Container Name" formControlName='container_name' name='container_name'>
+                                          <div *ngIf="addContainer.controls['container_name'].touched && !addContainer.controls['container_name'].valid">
+                                            <span *ngIf="addContainer.controls['container_name'].hasError('required') ">
+                                                Container Name is required
+                                                </span>
+                                          </div>
+                                      </div>
+                                </div>
+                                  <div class="col-6">
+                                    <p> <b>Status</b> </p>
+                                    <select class="form-control show-tick" formControlName='status' name='status' id='status'>
+                                      <option value="">Select Status</option>
+                                       <option value="1">Active</option>
+                                       <option value="0">Inactive</option>
+                                   </select>
+                                </div>
+
+                              </div>
+                          </div>
+
+                          <div class="" style="display: table;margin: auto;padding:20px 0px 0px 0px;">
+                            <input type="Submit" value="UPDATE TESTS" [disabled]='!addContainer.valid'  class="btn btn-raised btn-primary m-t-15 waves-effect">
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="content profile-page">
+  <div class="container-fluid">
+    <div class="row clearfix">
+      <div class=" col-12 col-sm-12">
+          <div class="card" style="border:none;padding:20px;">
+              <div class="header">
+                  <h4> LISTING CONTAINER </h4>
+                  <ul class="header-dropdown">
+                      <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more-vert"></i> </a>
+                          <ul class="dropdown-menu pull-right">
+                              <li><a href="javascript:void(0);">Action</a></li>
+                              <li><a href="javascript:void(0);">Another action</a></li>
+                              <li><a href="javascript:void(0);">Something else here</a></li>
+                          </ul>
+                      </li>
+                  </ul>
+              </div>
+              <div class="body">
+                  <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                      <thead>
+                          <tr>
+                              <th>Id</th>
+                              <th>Test Name</th>
+                              <th>Test Status</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tfoot>
+                          <tr>
+                              <th>Id</th>
+                              <th>Container Name</th>
+                              <th>Test Status</th>
+                              <th>Action</th>
+                          </tr>
+                      </tfoot>
+                      <tbody>
+                          <tr *ngFor="let task of listContainer; let i = index;">
+                              <td>{{i+1}}</td>
+                              <td>{{task.container_name}}</td>
+                              <!-- <td>Active</td> -->
+                              <td class="col-green" *ngIf="task.status == 1">Active</td>
+                              <td class="col-red" *ngIf="task.status == 0">Inactive</td>
+                              <td>
+                                <button  class="btn btn-outline-primary btn-sm" href="javascript:void(0);" routerLink="/container/editcontainer/{{task.id}}" ngbDropdownToggle>Edit</button>
+                                <button  class="btn btn-outline-primary btn-sm" href="javascript:void(0);" (click)="deleteConatiner(task.id)" ngbDropdownToggle>Delete</button>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+</section>

@@ -1,0 +1,66 @@
+<section class="content profile-page">
+  <div class="container-fluid">
+      <div class="row clearfix p-t-30">
+          <div class=" col-12">
+              <div class="card" style="border:none;padding:20px;">
+                  <div class="header">
+                      <h4>Manage Tests</h4>
+                  </div>
+                  <div *ngIf="success_msg" class="alert alert-success text-center" style="display: table;margin:auto">
+                    Tests Update Successfully
+                  </div>
+                  <form class="" [formGroup]="editTests" (ngSubmit)="onSubmit()">
+                    <div class="body">
+                      <div class="row clearfix p-t-10">
+                        <div class=" col-12">
+                          <div class="card" style="border:none;">
+                            <div class="body">
+                              <div class="row clearfix">
+                                  <div class="col-4">
+                                    <p> <b>Test Name</b> </p>
+                                    <div class="input-group">
+                                          <input type="hidden" class="form-control" formControlName='test_id' name='test_id'>
+                                          <input type="text" class="form-control"  #test_name placeholder="Test Name" formControlName='test_name' name='test_name' (change)="testCheckUnique()">
+                                          <div *ngIf="editTests.controls['test_name'].touched && !editTests.controls['test_name'].valid">
+                                            <span *ngIf="editTests.controls['test_name'].hasError('required') ">
+                                                Test Name is required
+                                                </span>
+                                          </div>
+                                          <div *ngIf="testAlredyExist != ''" class="alert alert-danger">
+                                            {{testAlredyExist}}
+                                          </div>
+                                        </div>
+                                </div>
+                                <div class="col-4">
+                                  <p> <b>Sample Name</b> </p>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control"  #test_name placeholder="Sample Name" formControlName='sample_name'>
+                                      <!-- <select class="form-control show-tick"  data-live-search="true" formControlName='sample_name' > -->
+                                        <!-- <option  *ngFor="let labc of listContainer;" [value]="labc.container_name">{{labc.container_name}}</option> -->
+                                    <!-- </select> -->
+                                        </div>
+                              </div>
+                                <div class="col-4">
+                                  <p> <b>Status</b> </p>
+                                    <select class="form-control show-tick" formControlName='status' name='status' id='status'>
+                                       <option value="">Select Status</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                              </div>
+                              </div>
+                          </div>
+
+                          <div class="" style="display:table;margin:auto;padding:20px 0px 0px 0px;">
+                            <input type="Submit" value="UPDATE TESTS" [disabled]='!editTests.valid'  class="btn btn-raised btn-primary m-t-15 waves-effect">
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

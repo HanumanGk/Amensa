@@ -1,0 +1,55 @@
+<section class="content profile-page">
+  <div class="container-fluid">
+      <div class="row clearfix p-t-30">
+          <div class=" col-12">
+              <div class="card" style="border:none;padding:20px;;">
+                  <div class="header">
+                      <h4>Manage Tests</h4>
+                  </div>
+                  <div *ngIf="success_msg" class="alert alert-success">
+                    <strong>Well done!</strong> Container Added successfully.
+                  </div>
+                  <form class="" [formGroup]="editContainer" (ngSubmit)="onSubmit()">
+                    <div class="body">
+                      <div class="row clearfix p-t-10">
+                        <div class=" col-12">
+                          <div class="card" style="border:none;">
+                            <div class="body">
+                              <div class="row clearfix">
+                                  <div class="col-6">
+                                    <p> <b>Container Name</b> </p>
+                                    <div class="input-group">
+                                          <input type="hidden" class="form-control" formControlName='cid' name='cid'>
+                                          <input type="text" class="form-control"  #container_name placeholder="Container Name" formControlName='container_name' name='container_name'>
+                                          <div *ngIf="editContainer.controls['container_name'].touched && !editContainer.controls['container_name'].valid">
+                                            <span *ngIf="editContainer.controls['container_name'].hasError('required') ">
+                                                Container Name is required
+                                                </span>
+                                        </div>
+                                      </div>
+                                </div>
+                                  <div class="col-6">
+                                    <p> <b>Status</b> </p>
+                                    <select class="form-control show-tick" formControlName='status' name='status' id='status'>
+                                      <option value="">Select Status</option>
+                                       <option value="1">Active</option>
+                                       <option value="0">Inactive</option>
+                                   </select>
+                                </div>
+
+                              </div>
+                          </div>
+
+                          <div class="" style="display:table;margin:auto;padding:20px 0px 0px 0px;">
+                            <input type="Submit" value="UPDATE TESTS" [disabled]='!editContainer.valid'  class="btn btn-raised btn-primary m-t-15 waves-effect">
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

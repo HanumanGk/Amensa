@@ -1,0 +1,191 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card mx-4">
+            <div class="card-body p-4">
+              <form [formGroup]='signupForm' (ngSubmit)="onSubmit()">
+                <h1>Register</h1>
+                <p class="text-muted">Apply For Franchisee</p>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Franchisee Name" formControlName='franchisee_name' required>
+                    <!-- <div *ngIf="signupForm.controls['franchisee_name'].touched && !signupForm.controls['franchisee_name'].valid">
+                      <span *ngIf="signupForm.controls['franchisee_name'].hasError('required') ">
+                          Name is required
+                          </span>
+                          <span *ngIf="signupForm.controls['franchisee_name'].hasError('minlength') ">
+                          Min length is 1
+                          </span>
+                          <span *ngIf="signupForm.controls['franchisee_name'].hasError('maxlength') ">
+                          max length is 15
+                      </span>
+                  </div> -->
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Owner Name" formControlName='franchisee_owner_name' required>
+                    <!-- <div *ngIf="signupForm.controls['franchisee_owner_name'].touched && !signupForm.controls['franchisee_owner_name'].valid">
+                      <span *ngIf="signupForm.controls['franchisee_owner_name'].hasError('required') ">
+                          Name is required
+                          </span>
+                          <span *ngIf="signupForm.controls['franchisee_owner_name'].hasError('minlength') ">
+                          Min length is 1
+                          </span>
+                          <span *ngIf="signupForm.controls['franchisee_owner_name'].hasError('maxlength') ">
+                          max length is 15
+                      </span>
+                  </div> -->
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Mobile Number" formControlName='contact_number' autocomplete="contact_number" required>
+                    <!-- <div *ngIf="signupForm.controls['contact_number'].touched && !signupForm.controls['contact_number'].valid">
+                      <span *ngIf="signupForm.controls['contact_number'].hasError('required') ">
+                          Mobile Number is required
+                          </span>
+                          <span *ngIf="signupForm.controls['contact_number'].hasError('minlength') ">
+                          Min length is 10
+                          </span>
+                          <span *ngIf="signupForm.controls['contact_number'].hasError('maxlength') ">
+                          max length is 11
+                      </span>
+                  </div> -->
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input type="email" class="form-control" placeholder="Email" formControlName='email' autocomplete="email" required>
+                    <!-- <div *ngIf="signupForm.controls['Emailid'].touched && !signupForm.controls['Emailid'].valid">
+                      <span *ngIf="signupForm.controls['Emailid'].hasError('required') ">
+                        Email ID is needed
+                          </span>
+
+                    <span *ngIf="signupForm.controls['Emailid'].hasError('email') ">
+                        Invalid Email ID
+                          </span>
+
+                  </div> -->
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Franchisee Address" formControlName='franchisee_address' autocomplete required>
+                    <!-- <div *ngIf="signupForm.controls['franchisee_address'].touched && !signupForm.controls['franchisee_address'].valid">
+                      <span *ngIf="signupForm.controls['franchisee_address'].hasError('required') ">
+                          Franchisee Address is required
+                          </span>
+                          <span *ngIf="signupForm.controls['franchisee_address'].hasError('minlength') ">
+                          Min length is 15
+                          </span>
+                  </div> -->
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Pincode" formControlName='pincode' autocomplete required>
+                    <!-- <div *ngIf="signupForm.controls['pincode'].touched && !signupForm.controls['pincode'].valid">
+                      <span *ngIf="signupForm.controls['pincode'].hasError('required') ">
+                          Pincode is required
+                          </span>
+                          <span *ngIf="signupForm.controls['pincode'].hasError('minlength') ">
+                          Min length is 6
+                          </span>
+                          <span *ngIf="signupForm.controls['pincode'].hasError('maxlength') ">
+                          max length is 6
+                      </span>
+                  </div> -->
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="City" formControlName='city' autocomplete required>
+                    <!-- <div *ngIf="signupForm.controls['city'].touched && !signupForm.controls['city'].valid">
+                      <span *ngIf="signupForm.controls['city'].hasError('required') ">
+                          City is required
+                          </span>
+                  </div> -->
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Country" formControlName='country' autocomplete required>
+                    <!-- <div *ngIf="signupForm.controls['country'].touched && !signupForm.controls['country'].valid">
+                      <span *ngIf="signupForm.controls['country'].hasError('required') ">
+                          Country is required
+                          </span>
+                  </div> -->
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="State" formControlName='state' autocomplete required>
+                    <!-- <div *ngIf="signupForm.controls['state'].touched && !signupForm.controls['state'].valid">
+                      <span *ngIf="signupForm.controls['state'].hasError('required') ">
+                          State is required
+                          </span>
+                  </div> -->
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-lock"></i></span>
+                  </div>
+                  <input type="password" class="form-control" placeholder="Password" autocomplete="password" formControlName='password' required>
+                    <!-- <div *ngIf="signupForm.controls['password'].touched && !signupForm.controls['password'].valid">
+                      <span *ngIf="signupForm.controls['password'].hasError('required') ">
+                          Password is required
+                          </span>
+                          <span *ngIf="signupForm.controls['password'].hasError('minlength') ">
+                            Minimum 6 characters required.
+                          </span>
+                  </div> -->
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-lock"></i></span>
+                  </div>
+                  <input type="password" class="form-control" placeholder="Confirm Password" autocomplete="new-password" formControlName='cpass' required>
+                    <!-- <div *ngIf="signupForm.controls['cpass'].touched && !signupForm.controls['cpass'].valid">
+                      <span *ngIf="signupForm.controls['cpass'].hasError('required') ">
+                          Confirm Password is required
+                          </span>
+                          <div *ngIf="signupForm.controls['cpass'].errors.notEqual">
+                            Passwords does not match.
+                          </div>
+                          <span *ngIf="signupForm.controls['cpass'].hasError('minlength') ">
+                            Minimum 6 characters required.
+                          </span>
+                  </div> -->
+                </div>
+                <button type="Submit" value="SIGN UP" class="btn btn-block btn-success">Create Account</button>
+              </form>
+            </div>
+            <!-- <div class="card-footer p-4">
+              <div class="row">
+                <div class="col-6">
+                  <button class="btn btn-block btn-facebook" type="button"><span>facebook</span></button>
+                </div>
+                <div class="col-6">
+                  <button class="btn btn-block btn-twitter" type="button"><span>twitter</span></button>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

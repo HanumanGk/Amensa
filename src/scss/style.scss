@@ -1,0 +1,56 @@
+// If you want to override variables do it here
+@import "variables";
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+
+// If you want to add something do it here
+@import "custom";
+
+
+.dataTables_filter {
+	label {
+		float: right;
+	}
+}
+.dataTables_paginate {
+	float: right;
+}
+td {
+	a {
+		margin: 0px 4px;
+	}
+}
+.dtp-content {
+	max-width: 330px !important;
+}
+.bootstrap-select {
+	.bs-searchbox {
+		.form-control {
+			margin-left: 0px !important;
+		}
+	}
+}
+.tag-input-class {
+	tag-input-form {
+		.ng2-tag-input__text-input {
+			width: 1140px !important;
+			border-radius: 8px !important;
+		}
+	}
+}
+// MOBILE VEIW CSS
+@media only screen and (min-device-width : 320px) and (max-device-width : 580px) {
+  .tag-input-class {
+    tag-input-form {
+      .ng2-tag-input__text-input {
+        width: 300px !important;
+      }
+    }
+  }
+  .card-mobile-view{
+    width:100% !important;
+  }
+}

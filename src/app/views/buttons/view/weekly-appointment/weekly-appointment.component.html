@@ -1,0 +1,66 @@
+
+<section class="content ecommerce-page">
+  <div class="">
+      <div class="row clearfix">
+          <div class="col-12">
+              <div class="card product_item_list">
+                  <div class="body table-responsive">
+                      <table class="table table-hover m-b-0 table-bordered">
+                          <thead>
+                              <tr>
+                                  <th data-breakpoints="sm xs">ID</th>
+                                  <th data-breakpoints="sm xs">Test ID</th>
+                                  <th data-breakpoints="sm xs">Barcode</th>
+                                  <th data-breakpoints="sm xs">Status</th>
+                                  <th data-breakpoints="sm xs">Patient Name</th>
+                                  <!-- <th data-breakpoints="sm xs">Gender</th> -->
+                                  <th data-breakpoints="sm xs">Age</th>
+                                  <th data-breakpoints="sm xs">Test Name</th>
+                                  <th data-breakpoints="sm xs">MRP</th>
+                                  <th data-breakpoints="sm xs">B2B</th>
+                                  <th data-breakpoints="sm xs">Record Date</th>
+                                  <th data-breakpoints="sm xs">Collection Date</th>
+                                  <!-- <th data-breakpoints="sm xs">Lab Entry Date</th> -->
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr  *ngFor="let appointment of listAppointment; let i = index;">
+                                  <td>{{i+1}}</td>
+                                  <td>{{appointment.pid}}</td>
+                                  <td>{{appointment.p_barcode}}</td>
+                                  <td>{{appointment.appointment_status}}</td>
+                                  <td>{{appointment.pname}}</td>
+                                  <td>{{appointment.age}}</td>
+                                  <td>{{appointment.name}}</td>
+                                  <td>{{appointment.mrp}}</td>
+                                  <td>{{appointment.b2b}}</td>
+                                  <td>{{appointment.created_at}}</td>
+                                  <td>{{appointment.updated_at}}</td>
+                                  <!-- <td>{{appointment.updated_at}}</td> -->
+                                      <div class="modal fade" id="largeModal-{{i+1}}" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="largeModalLabel">Modal title</h4>
+                                                </div>
+                                                <div class="modal-body"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales orci ante, sed ornare eros vestibulum ut. Ut accumsan
+                                                    vitae eros sit amet tristique. Nullam scelerisque nunc enim, non dignissim nibh faucibus ullamcorper.
+                                                    Fusce pulvinar libero vel ligula iaculis ullamcorper. Integer dapibus, mi ac tempor varius, purus
+                                                    nibh mattis erat, vitae porta nunc nisi non tellus. Vivamus mollis ante non massa egestas fringilla.
+                                                    Vestibulum egestas consectetur nunc at ultricies. Morbi quis consectetur nunc. </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                                                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

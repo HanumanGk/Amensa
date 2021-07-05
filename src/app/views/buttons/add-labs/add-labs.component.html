@@ -1,0 +1,228 @@
+<section class="content profile-page">
+  <div class="container-fluid">
+      <div class="row clearfix p-t-30">
+          <div class=" col-12">
+              <div class="card" style="padding:20px;border:none;">
+                  <div class="header">
+                      <h4>Add Labs</h4>
+                  </div>
+                  <div *ngIf="success_msg" class="alert alert-success text-center" style="display: table;margin:auto">
+                    Labs Add Successfully
+                  </div>
+                  <form class="" [formGroup]="addLabs" (ngSubmit)="onSubmit()">
+                    <div class="body">
+                      <div class="row clearfix p-t-10">
+                        <div class=" col-12">
+                          <div class="card" style="border:none;">
+                            <div class="body">
+                              <div class="row clearfix">
+                                  <div class="col-6">
+                                    <p> <b>Lab Name</b> </p>
+                                    <div class="input-group">
+                                          <input type="text" class="form-control"  #lab_name placeholder="Test Name" formControlName='lab_name' name='lab_name'>
+                                          <div *ngIf="addLabs.controls['lab_name'].touched && !addLabs.controls['lab_name'].valid">
+                                            <span *ngIf="addLabs.controls['lab_name'].hasError('required') ">
+                                                Lab Name is required
+                                                </span>
+                                                <span *ngIf="addLabs.controls['lab_name'].hasError('maxlength') ">
+                                                  max length is 8
+                                              </span>
+                                          </div>
+                                      </div>
+                                </div>
+                                  <div class="col-6">
+                                    <p> <b>Email Id</b> </p>
+                                    <div class="input-group">
+                                          <input type="text" class="form-control"  #lab_name placeholder="Email Id" formControlName='email' name='email'>
+                                          <div *ngIf="addLabs.controls['lab_desc'].touched && !addLabs.controls['lab_desc'].valid">
+                                            <span *ngIf="addLabs.controls['lab_desc'].hasError('required') ">
+                                                Email ID is required
+                                                </span>
+                                                <span *ngIf="addLabs.controls['email'].hasError('email') ">
+                                                  Invalid Email ID
+                                                </span>
+                                        </div>
+                                      </div>
+                                </div>
+                              </div>
+                              <div class="row clearfix">
+                                <div class="col-12">
+                                  <p> <b>Lab Description</b> </p>
+                                  <div class="input-group">
+                                        <textarea rows="2" class="form-control no-resize" formControlName='lab_desc' name='lab_desc' id='lab_desc' placeholder="Please type what you want..."></textarea>
+                                        <div *ngIf="addLabs.controls['lab_desc'].touched && !addLabs.controls['lab_desc'].valid">
+                                          <span *ngIf="addLabs.controls['lab_desc'].hasError('required') ">
+                                              Lab Description is required
+                                              </span>
+                                              <span *ngIf="addLabs.controls['lab_desc'].hasError('maxlength') ">
+                                              max length is 15
+                                          </span>
+                                      </div>
+                                    </div>
+                              </div>
+                            </div>
+                              <div class="row clearfix">
+                                <div class="col-4">
+                                  <p> <b>Lab Owner Name</b> </p>
+                                  <div class="input-group">
+                                        <input type="text" class="form-control"  #lab_name placeholder="Owner Name" formControlName='owner_name' name='owner_name'>
+                                        <div *ngIf="addLabs.controls['owner_name'].touched && !addLabs.controls['owner_name'].valid">
+                                          <span *ngIf="addLabs.controls['owner_name'].hasError('required') ">
+                                              Owner Name is required
+                                              </span>
+                                        </div>
+                                    </div>
+                              </div>
+                              <div class="col-4">
+                                <p> <b>Lab Owner Contact</b> </p>
+                                <div class="input-group">
+                                      <input type="text" class="form-control mobile-phone-number" placeholder="Contact Number" formControlName='contact_number' name='contact_number'>
+                                      <div *ngIf="addLabs.controls['contact_number'].touched && !addLabs.controls['contact_number'].valid">
+                                        <span *ngIf="addLabs.controls['contact_number'].hasError('required') ">
+                                            Owner Contact Number is required
+                                            </span>
+                                          <span *ngIf="addLabs.controls['contact_number'].hasError('pattern') ">
+                                            Enter only numbers.
+                                          </span>
+                                          <span *ngIf="addLabs.controls['contact_number'].hasError('minlength') ">
+                                            Enter minumum 10 numbers.
+                                          </span>
+                                          <span *ngIf="addLabs.controls['contact_number'].hasError('maxlength') ">
+                                            Enter minumum 12 numbers.
+                                        </span>
+                                      </div>
+                                  </div>
+                              </div>
+                                <div class="col-4">
+                                  <p> <b>Date Of Birth</b> </p>
+                                  <div class="input-group">
+                                        <input type="text" class="datepicker form-control"  placeholder="Date Of Birth Name" formControlName='dob' name='dob'>
+
+                                    </div>
+                              </div>
+                            </div>
+                            <div class="row clearfix">
+                              <div class="col-6">
+                                <p> <b>Lab Second Owner Name</b> </p>
+                                <div class="input-group">
+                                      <input type="text" class="form-control"  placeholder="Owner Name" formControlName='second_owner_name' name='second_owner_name'>
+                                    </div>
+                            </div>
+                            <div class="col-6">
+                              <p> <b>Lab Alternate Owner Contact</b> </p>
+                              <div class="input-group">
+                                    <input type="text" class="form-control mobile-phone-number" placeholder="Alternate Contact Number" formControlName='alt_contact_number' name='alt_contact_number'>
+                                    <div *ngIf="addLabs.controls['alt_contact_number'].touched && !addLabs.controls['alt_contact_number'].valid">
+                                      <span *ngIf="addLabs.controls['alt_contact_number'].hasError('pattern') ">
+                                        Enter only numbers.
+                                      </span>
+                                      <span *ngIf="addLabs.controls['alt_contact_number'].hasError('minlength') ">
+                                        Enter minumum 10 numbers.
+                                      </span>
+                                      <span *ngIf="addLabs.controls['alt_contact_number'].hasError('maxlength') ">
+                                        Enter minumum 12 numbers.
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="row clearfix">
+                            <div class="col-6">
+                              <p> <b>PAN Number</b> </p>
+                              <div class="input-group">
+                                    <input type="text" class="form-control"  placeholder="PAN Number" formControlName='pan_number' name='pan_number'>
+                                  </div>
+                          </div>
+                          <div class="col-6">
+                            <p> <b>GST Number</b> </p>
+                            <div class="input-group">
+                                  <input type="text" class="form-control mobile-phone-number" placeholder="GST Number" formControlName='gst_number' name='gst_number'>
+                                </div>
+                          </div>
+                        </div>
+                          <div class="row clearfix">
+                            <div class="col-12">
+                              <p> <b>Lab Address</b> </p>
+                              <div class="input-group">
+                                    <textarea rows="2" class="form-control no-resize" formControlName='address' name='address' id='address' placeholder="Please type what you want..."></textarea>
+                                    <div *ngIf="addLabs.controls['address'].touched && !addLabs.controls['address'].valid">
+                                      <span *ngIf="addLabs.controls['address'].hasError('required') ">
+                                          Lab Address is required
+                                          </span>
+                                          <!-- <span *ngIf="addLabs.controls['address'].hasError('maxlength') ">
+                                          max length is 15
+                                      </span> -->
+                                    </div>
+                                </div>
+                          </div>
+                          </div>
+                          <div class="row clearfix">
+                            <div class="col-3">
+                              <p> <b>Country</b> </p>
+                              <div class="input-group">
+                                    <input type="text" class="form-control"  placeholder="Country" formControlName='country' name='country'>
+                                    <div *ngIf="addLabs.controls['country'].touched && !addLabs.controls['country'].valid">
+                                      <span *ngIf="addLabs.controls['country'].hasError('required') ">
+                                          Country is required
+                                          </span>
+                                    </div>
+                                  </div>
+                          </div>
+                            <div class="col-3">
+                              <p> <b>State</b> </p>
+                              <div class="input-group">
+                                    <input type="text" class="form-control"  placeholder="State" formControlName='state' name='state'>
+                                    <div *ngIf="addLabs.controls['state'].touched && !addLabs.controls['state'].valid">
+                                      <span *ngIf="addLabs.controls['state'].hasError('required') ">
+                                          State is required
+                                          </span>
+                                    </div>
+                                </div>
+                          </div>
+                          <div class="col-3">
+                            <p> <b>City</b> </p>
+                            <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="City" formControlName='city' name='city'>
+                                  <div *ngIf="addLabs.controls['city'].touched && !addLabs.controls['city'].valid">
+                                    <span *ngIf="addLabs.controls['city'].hasError('required') ">
+                                        City is required
+                                        </span>
+                                  </div>
+                              </div>
+                          </div>
+                            <div class="col-3">
+                              <p> <b>Pincode</b> </p>
+                              <div class="input-group">
+                                    <input type="text" class="form-control"  #lab_name placeholder="Pincode" formControlName='pincode' name='pincode'>
+                                    <div *ngIf="addLabs.controls['pincode'].touched && !addLabs.controls['pincode'].valid">
+                                      <span *ngIf="addLabs.controls['pincode'].hasError('required') ">
+                                          Pincode is required
+                                          </span>
+                                    </div>
+                                  </div>
+                          </div>
+                        </div>
+                        <div class="row clearfix">
+                          <div class="col-12">
+                              <p> <b>Status</b> </p>
+                                <select class="form-control show-tick" formControlName='status' name='status' id='status'>
+                                  <option value="">Select Status</option>
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                          </div>
+                        </div>
+                          </div>
+                          <div class="" style="display:table;margin:auto;padding:20px 0px 0px 0px;">
+                            <input type="Submit" value="ADD LABS"  class="btn btn-raised btn-primary m-t-15 waves-effect">
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

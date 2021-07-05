@@ -1,0 +1,93 @@
+
+<section class="content ecommerce-page">
+  <div class="">
+      <div class="row clearfix">
+          <div class="col-12">
+              <div class="card product_item_list">
+                  <div class="body table-responsive">
+                      <table class="table table-hover m-b-0 table-bordered">
+                          <thead>
+                              <tr>
+                                  <th data-breakpoints="sm xs">ID</th>
+                                  <th data-breakpoints="sm xs">Test ID</th>
+                                  <th data-breakpoints="sm xs">Barcode</th>
+                                  <th data-breakpoints="sm xs">Status</th>
+                                  <th data-breakpoints="sm xs">Patient Name</th>
+                                  <!-- <th data-breakpoints="sm xs">Gender</th> -->
+                                  <th data-breakpoints="sm xs">Age</th>
+                                  <th data-breakpoints="sm xs">Test Name</th>
+                                  <th data-breakpoints="sm xs">MRP</th>
+                                  <th data-breakpoints="sm xs">B2B</th>
+                                  <th data-breakpoints="sm xs">Record Date</th>
+                                  <th data-breakpoints="sm xs">Collection Date</th>
+                                  <th data-breakpoints="sm xs">Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            <ng-container >
+                              <tr *ngFor="let appointment of listAppointment;let i = index;">
+                                <td *ngIf="appointment.appointment_status== 'Sample Awaiting	'" class="red_btn">{{i+1}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Under Processing	'" class="green_btn">{{i+1}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Report Generated	'" class="blue_btn">{{i+1}}</td>
+
+                                <td *ngIf="appointment.appointment_status== 'Sample Awaiting	'" class="red_btn">{{appointment.pid}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Under Processing	'" class="green_btn">{{appointment.pid}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Report Generated	'" class="blue_btn">{{appointment.pid}}</td>
+
+                                <td *ngIf="appointment.appointment_status== 'Sample Awaiting	'" class="red_btn">{{appointment.p_barcode}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Under Processing	'" class="green_btn">{{appointment.p_barcode}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Report Generated	'" class="blue_btn">{{appointment.p_barcode}}</td>
+
+                                <td *ngIf="appointment.appointment_status== 'Sample Awaiting	'" class="red_btn">{{appointment.appointment_status}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Under Processing	'" class="green_btn">{{appointment.appointment_status}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Report Generated	'" class="blue_btn">{{appointment.appointment_status}}</td>
+
+                                <td *ngIf="appointment.appointment_status== 'Sample Awaiting	'" class="red_btn">{{appointment.pname}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Under Processing	'" class="green_btn">{{appointment.pname}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Report Generated	'" class="blue_btn">{{appointment.pname}}</td>
+
+                                <td *ngIf="appointment.appointment_status== 'Sample Awaiting	'" class="red_btn">{{appointment.age}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Under Processing	'" class="green_btn">{{appointment.age}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Report Generated	'" class="blue_btn">{{appointment.age}}</td>
+
+                                <td *ngIf="appointment.appointment_status== 'Sample Awaiting	'" class="red_btn">{{appointment.name}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Under Processing	'" class="green_btn">{{appointment.name}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Report Generated	'" class="blue_btn">{{appointment.name}}</td>
+
+                                <td *ngIf="appointment.appointment_status== 'Sample Awaiting	'" class="red_btn">{{appointment.mrp}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Under Processing	'" class="green_btn">{{appointment.mrp}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Report Generated	'" class="blue_btn">{{appointment.mrp}}</td>
+
+                                <td *ngIf="appointment.appointment_status== 'Sample Awaiting	'" class="red_btn">{{appointment.b2b}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Under Processing	'" class="green_btn">{{appointment.b2b}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Report Generated	'" class="blue_btn">{{appointment.b2b}}</td>
+
+                                <td *ngIf="appointment.appointment_status== 'Sample Awaiting	'" class="red_btn">{{appointment.created_at}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Under Processing	'" class="green_btn">{{appointment.created_at}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Report Generated	'" class="blue_btn">{{appointment.created_at}}</td>
+
+                                <td *ngIf="appointment.appointment_status== 'Sample Awaiting	'" class="red_btn">{{appointment.updated_at}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Under Processing	'" class="green_btn">{{appointment.updated_at}}</td>
+                                <td *ngIf="appointment.appointment_status== 'Report Generated	'" class="blue_btn">{{appointment.updated_at}}</td>
+
+                                <td>
+                                  <div ngbDropdown container="body">
+                                    <button *ngIf="appointment.appointment_status== 'Sample Awaiting	'"  class="btn btn-outline-primary btn-sm" href="javascript:void(0);" routerLink="/base/editsamples/{{appointment.aid}}" ngbDropdownToggle>Edit</button>
+                                    <!-- <button *ngIf="appointment.appointment_status== 'Sample Awaiting	'" class="btn btn-outline-primary btn-sm" href="javascript:void(0);" (click)="deleteTest(appointment.aid)" ngbDropdownToggle>Delete</button> -->
+                                    <button *ngIf="adminLogin == true && appointment.appointment_status== 'Sample Awaiting	'" class="btn btn-outline-primary btn-sm" href="javascript:void(0);" (click)="statusUpdateProcessing(appointment.aid)" ngbDropdownToggle>Status Update</button>
+                                    <button *ngIf="adminLogin == true && appointment.appointment_status== 'Under Processing	'" class="btn btn-outline-primary btn-sm" href="javascript:void(0);" (click)="statusUpdateGenerated(appointment.aid)" ngbDropdownToggle>Status Update</button>
+                                  </div>
+                                  <!-- <a style="padding:0px;" href="javascript:void(0);" routerLink="/container/editcontainer/{{appointment.aid}}"  class="btn btn-default waves-effect waves-float waves-green"><i class="fa fa-edit"></i></a>
+                                  <a style="padding:0px;" href="javascript:void(0);" routerLink="/container/editcontainer/{{appointment.aid}}"  class="btn btn-default waves-effect waves-float waves-green"><i class="fa fa-edit"></i></a>
+                                  <a style="padding:0px;" href="javascript:void(0);" (click)="deleteTest(appointment.aid)" class="btn btn-default waves-effect waves-float waves-red"><i class="fa fa-times-rectangle" data-type="confirm" ></i></a> -->
+                                </td>
+                            </tr>
+                            </ng-container>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
